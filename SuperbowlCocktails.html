@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Super Bowl Cocktail Spectacular</title>
+  <!-- Google Fonts for modern typography -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    /* Global Styles */
+    * { box-sizing: border-box; }
+    html, body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Montserrat', sans-serif;
+      background: #f0f0f0;
+      color: #333;
+      font-size: 16px;
+    }
+    /* Container: Remove top margin so the header sits flush with the viewport */
+    .menu-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      background: #fff;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      border-radius: 0 0 8px 8px;
+      overflow: hidden;
+    }
+    /* Header Styles - Modern & Minimal */
+    header {
+      text-align: center;
+      background: #2C3E50;  /* A modern dark tone */
+      color: #ecf0f1;
+      padding: 30px 15px;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+    }
+    header p {
+      margin: 10px 0 0;
+      font-size: 1rem;
+      font-weight: 400;
+    }
+    header .tagline {
+      font-size: 0.9rem;
+      margin-top: 10px;
+      font-style: normal;
+    }
+    /* Mobile-first: Single column layout */
+    .columns {
+      display: block;
+    }
+    .column {
+      padding: 15px;
+      border-bottom: 1px solid #e0e0e0;
+    }
+    .column:last-child {
+      border-bottom: none;
+    }
+    .column h2 {
+      font-size: 1.5em;
+      margin-bottom: 15px;
+      padding-bottom: 8px;
+      border-bottom: 3px solid;
+    }
+    /* Specific styling for each column header */
+    .eagles h2 {
+      color: #004225;
+      border-color: #004225;
+    }
+    .kansas h2 {
+      color: #b30000;
+      border-color: #b30000;
+    }
+    /* Cocktail Entry Styles */
+    .cocktail {
+      position: relative;
+      margin-bottom: 20px;
+      padding: 15px;
+      border-radius: 8px;
+      background: #fafafa;
+      border: 1px solid #ddd;
+      transition: transform 0.3s ease, background 0.3s ease;
+      cursor: pointer;
+    }
+    .cocktail:hover {
+      background: #fff;
+      transform: scale(1.02);
+    }
+    .cocktail-title {
+      font-weight: 700;
+      font-size: 1.1em;
+      margin-bottom: 8px;
+    }
+    .ingredients {
+      font-style: italic;
+      color: #666;
+      margin-bottom: 5px;
+    }
+    .description {
+      margin-left: 10px;
+      color: #555;
+    }
+    /* Modal Styles */
+    .modal {
+      display: none; /* Hidden by default */
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0, 0, 0, 0.5);
+    }
+    .modal-content {
+      background-color: #fefefe;
+      margin: 10% auto;
+      padding: 20px;
+      border: 1px solid #888;
+      width: 80%;
+      max-width: 400px;
+      border-radius: 8px;
+      position: relative;
+    }
+    .close-button {
+      color: #aaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .close-button:hover,
+    .close-button:focus {
+      color: black;
+      text-decoration: none;
+    }
+    /* Two-Column Layout for Larger Screens */
+    @media (min-width: 768px) {
+      .columns {
+        display: flex;
+      }
+      .column {
+        width: 50%;
+        padding: 20px;
+        border-bottom: none;
+      }
+      .eagles {
+        border-right: 1px solid #e0e0e0;
+      }
+    }
+    /* Adjust Typography for Smaller Screens */
+    @media (max-width: 600px) {
+      body {
+        font-size: 14px;
+      }
+      header h1 {
+        font-size: 1.8rem;
+      }
+      header p {
+        font-size: 0.9rem;
+      }
+      .column h2 {
+        font-size: 1.3em;
+      }
+      .cocktail-title {
+        font-size: 1em;
+      }
+    }
+    /* Print-Friendly */
+    @media print {
+      body {
+        background: #fff;
+      }
+      .menu-container {
+        box-shadow: none;
+        margin: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="menu-container">
+    <header>
+      <h1>Super Bowl Cocktail Spectacular</h1>
+      <p>Where bold flavors soar and every sip is a game-changer.</p>
+      <p class="tagline">Step into our realm of bespoke cocktails—a tribute to the art of victory and the thrill of the game.</p>
+    </header>
+    <div class="columns">
+      <!-- Eagles-Inspired Cocktails -->
+      <div class="column eagles">
+        <h2>Eagles-Inspired Elixirs</h2>
+        
+        <div class="cocktail">
+          <div class="cocktail-title">Eagle 1. The Green Machine (Bold &amp; Gritty)</div>
+          <div class="ingredients">Maker’s Mark Bourbon, green Chartreuse, lemon juice, honey syrup, Angostura bitters</div>
+          <div class="description">"Strong, bitter, and built to last—like a 4th quarter Eagles defense."</div>
+        </div>
+        
+        <div class="cocktail">
+          <div class="cocktail-title">Eagle 2. The Rocky Punch (Powerful &amp; Underdog-Driven)</div>
+          <div class="ingredients">Maker’s Mark Bourbon, orange juice, amaretto, Angostura bitters</div>
+          <div class="description">"Hits hard, knocks you down, and keeps coming—just like the Birds."</div>
+        </div>
+        
+        <div class="cocktail">
+          <div class="cocktail-title">Eagle 3. The Liberty Lightning (Refreshing &amp; Classic)</div>
+          <div class="ingredients">Gin, lemon juice, simple syrup, club soda</div>
+          <div class="description">"Tastes like freedom and a touchdown drive with 2 minutes left."</div>
+        </div>
+        
+        <div class="cocktail">
+          <div class="cocktail-title">Eagle 4. The Midnight Kelly (Smooth but Tough)</div>
+          <div class="ingredients">Dark rum, cola, lime juice, vanilla syrup</div>
+          <div class="description">"As dark and mysterious as a Philly Special you didn’t see coming."</div>
+        </div>
+      </div>
+      
+      <!-- Kansas City Cocktails -->
+      <div class="column kansas">
+        <h2>Kansas City Crafted Cocktails<br>(Cunning, Bold &amp; Miraculously Lucky)</h2>
+        
+        <div class="cocktail">
+          <div class="cocktail-title">KC1. The Arrowhead Ambush (Sneaky &amp; Spicy)</div>
+          <div class="ingredients">Bullet Bourbon, cherry brandy liqueur, lemon juice, simple syrup, Angostura bitters</div>
+          <div class="description">"Even when they don’t actually get a first down, they somehow do."</div>
+        </div>
+        
+        <div class="cocktail">
+          <div class="cocktail-title">KC2. The Mahomes Mirage (Deceptively Smooth)</div>
+          <div class="ingredients">Bullet Bourbon, apple juice, honey syrup, cinnamon powder</div>
+          <div class="description">"Starts smooth, ends in overreaction—like Mahomes hitting the turf."</div>
+        </div>
+        
+        <div class="cocktail">
+          <div class="cocktail-title">KC3. The Arrowhead Illusion (Rich &amp; Dangerous)</div>
+          <div class="ingredients">Mezcal, maple syrup, lime juice, Angostura bitters</div>
+          <div class="description">"You think it's earned, but really, it’s smoke and mirrors."</div>
+        </div>
+        
+        <div class="cocktail">
+          <div class="cocktail-title">KC4. The Red Thunder (Loud &amp; Overpowering)</div>
+          <div class="ingredients">Bullet Bourbon, ginger beer, lime juice, chili flakes</div>
+          <div class="description">"As loud and infuriating as Arrowhead Stadium at its worst."</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Modal Structure -->
+  <div id="modal" class="modal">
+    <div class="modal-content">
+      <span class="close-button">&times;</span>
+      <h2 id="modalTitle"></h2>
+      <ul id="modalIngredients"></ul>
+    </div>
+  </div>
+  
+  <!-- JavaScript for Modal Functionality -->
+  <script>
+    // Object containing ingredient details (with quantities) for each cocktail.
+    const cocktailDetails = {
+      "Eagle 1. The Green Machine (Bold & Gritty)": [
+        { ingredient: "Maker’s Mark Bourbon", quantity: "2 oz" },
+        { ingredient: "Green Chartreuse", quantity: "0.5 oz" },
+        { ingredient: "Lemon juice", quantity: "0.75 oz" },
+        { ingredient: "Honey syrup", quantity: "0.5 oz" },
+        { ingredient: "Angostura bitters", quantity: "2 dashes" }
+      ],
+      "Eagle 2. The Rocky Punch (Powerful & Underdog-Driven)": [
+        { ingredient: "Maker’s Mark Bourbon", quantity: "2 oz" },
+        { ingredient: "Orange juice", quantity: "1.5 oz" },
+        { ingredient: "Amaretto", quantity: "0.5 oz" },
+        { ingredient: "Angostura bitters", quantity: "2 dashes" }
+      ],
+      "Eagle 3. The Liberty Lightning (Refreshing & Classic)": [
+        { ingredient: "Gin", quantity: "2 oz" },
+        { ingredient: "Lemon juice", quantity: "0.75 oz" },
+        { ingredient: "Simple syrup", quantity: "0.5 oz" },
+        { ingredient: "Club soda", quantity: "Top off" }
+      ],
+      "Eagle 4. The Midnight Kelly (Smooth but Tough)": [
+        { ingredient: "Dark rum", quantity: "2 oz" },
+        { ingredient: "Cola", quantity: "Top off" },
+        { ingredient: "Lime juice", quantity: "0.5 oz" },
+        { ingredient: "Vanilla syrup", quantity: "0.25 oz" }
+      ],
+      "KC1. The Arrowhead Ambush (Sneaky & Spicy)": [
+        { ingredient: "Bullet Bourbon", quantity: "2 oz" },
+        { ingredient: "Cherry brandy liqueur", quantity: "0.5 oz" },
+        { ingredient: "Lemon juice", quantity: "0.75 oz" },
+        { ingredient: "Simple syrup", quantity: "0.5 oz" },
+        { ingredient: "Angostura bitters", quantity: "2 dashes" }
+      ],
+      "KC2. The Mahomes Mirage (Deceptively Smooth)": [
+        { ingredient: "Bullet Bourbon", quantity: "2 oz" },
+        { ingredient: "Apple juice", quantity: "1.5 oz" },
+        { ingredient: "Honey syrup", quantity: "0.5 oz" },
+        { ingredient: "Cinnamon powder", quantity: "A pinch" }
+      ],
+      "KC3. The Arrowhead Illusion (Rich & Dangerous)": [
+        { ingredient: "Mezcal", quantity: "2 oz" },
+        { ingredient: "Maple syrup", quantity: "0.5 oz" },
+        { ingredient: "Lime juice", quantity: "0.75 oz" },
+        { ingredient: "Angostura bitters", quantity: "2 dashes" }
+      ],
+      "KC4. The Red Thunder (Loud & Overpowering)": [
+        { ingredient: "Bullet Bourbon", quantity: "2 oz" },
+        { ingredient: "Ginger beer", quantity: "Top off" },
+        { ingredient: "Lime juice", quantity: "0.5 oz" },
+        { ingredient: "Chili flakes", quantity: "A pinch" }
+      ]
+    };
+
+    // Get modal elements.
+    const modal = document.getElementById('modal');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalIngredients = document.getElementById('modalIngredients');
+    const closeButton = document.querySelector('.close-button');
+
+    // Function to open the modal and populate it with details.
+    function openModal(title, ingredients) {
+      modalTitle.textContent = title;
+      // Clear any previous list items.
+      modalIngredients.innerHTML = '';
+      ingredients.forEach(item => {
+        const li = document.createElement('li');
+        li.textContent = `${item.ingredient}: ${item.quantity}`;
+        modalIngredients.appendChild(li);
+      });
+      modal.style.display = 'block';
+    }
+
+    // Attach click event to each cocktail entry.
+    document.querySelectorAll('.cocktail').forEach(function(cocktail) {
+      cocktail.addEventListener('click', function() {
+        const title = cocktail.querySelector('.cocktail-title').textContent.trim();
+        const details = cocktailDetails[title];
+        if (details) {
+          openModal(title, details);
+        } else {
+          openModal(title, [{ ingredient: "No details available", quantity: "" }]);
+        }
+      });
+    });
+
+    // Close the modal when the close button is clicked.
+    closeButton.addEventListener('click', function() {
+      modal.style.display = 'none';
+    });
+
+    // Also close the modal if the user clicks outside of the modal content.
+    window.addEventListener('click', function(event) {
+      if (event.target === modal) {
+        modal.style.display = 'none';
+      }
+    });
+  </script>
+</body>
+</html>
